@@ -4,22 +4,19 @@ import Intro from "./src/Intro/Intro";
 import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
-	return (
-		<View style={styles.container}>
-			<StatusBar style="auto" />
-			<Button title="Hello"></Button>
-			<Intro />
-		</View>
-	);
+  return (
+    <View style={styles.container}>
+      <StatusBar style="auto" />
+      <Intro />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "grey",
-		alignItems: "center",
-		justifyContent: "center",
-		marginTop: 50,
-		marginBottom: 50,
-	},
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
