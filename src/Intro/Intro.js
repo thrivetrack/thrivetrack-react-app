@@ -7,51 +7,63 @@ import Intro2 from "./Intro2";
 
 // This is simply a stack you can push and pop from. You will always be on the most recently pushed stack. LIFO ordering
 
-const HomeScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation, route }) => {
 	return (
-		<View>
+		<View style={styles.test}>
+			<Text>This is {route.params.a}'s profile</Text>
 			<Button
-				title="Jane"
-				onPress={() => navigation.push("Profile", { name: "Jane" })}
+				title="Go back!"
+				onPress={() => {
+					navigation.push("Intro1");
+				}}
 			/>
 		</View>
 	);
 };
-const ProfileScreen = ({ navigation, route }) => {
-	return (
-		<View>
-			<Text>This is {route.params.a}'s profile</Text>
-		</View>
-	);
-};
+
+const stackNavigItems = [
+	{
+		id: 0,
+		name: "Intro1",
+		component: Intro1,
+		screenComponent: (props) => {
+			return <Intro1 />;
+		},
+		headerShown: false,
+	},
+	{
+		id: 1,
+		name: "Intro2",
+		component: ProfileScreen,
+		screenComponent: (props) => {
+			return <ProfileScreen />;
+		},
+		headerShow: true,
+	},
+];
 
 const Stack = createNativeStackNavigator();
 
 const Intro = () => {
-	const pages = [Intro1, Intro2];
-	{
-		/* {pages.map((page, index) => {
-            <Stack.Screen name={index} component={page}></Stack.Screen>;
-          })} */
-	}
-	{
-		/* <Stack.Screen
-            name="Intro 1"
-            component={Intro1}
-            // options={{ title: "Intro 1", headerShown: true }}
-          ></Stack.Screen> */
-	}
+	// const pages = [ProfileScreen];
 
 	return (
 		<View style={styles.container}>
 			<NavigationContainer>
-				<Stack.Navigator>
-					<Stack.Screen
-						name="Intro 1"
-						component={Intro1}
-						// options={{ title: "Intro 1", headerShown: true }}
-					></Stack.Screen>
-					<Stack.Screen name="Profile" component={ProfileScreen} />
+				<Stack.Navigator initialRouteName="Home">
+					{stackNavigItems.map((item, index) => {
+						return (
+							<Stack.Screen
+								key={index}
+								name={item.name}
+								component={item.component}
+								options={{
+									title: item.title,
+									headerShown: false,
+								}}
+							/>
+						);
+					})}
 				</Stack.Navigator>
 			</NavigationContainer>
 		</View>
@@ -61,13 +73,19 @@ const Intro = () => {
 const styles = StyleSheet.create({
 	container: {
 		// flex: 1,
-		backgroundColor: "red",
+		backgroundColor: "white",
 		// justifyContent: "center",
 		width: "100%",
 		height: "100%",
 	},
-	home: {
-		backgroundColor: "red",
+	test: {
+		display: "flex",
+		width: "100%",
+		height: "100%",
+		flexDirection: "column",
+		justifyContent: "center",
+		alignItems: "center",
+		backgroundColor: "white",
 	},
 });
 

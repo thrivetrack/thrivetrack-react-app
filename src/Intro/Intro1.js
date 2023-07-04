@@ -10,16 +10,12 @@ import { LinearGradient } from "expo-linear-gradient";
 import GradientText from "../Utility/GradientText";
 
 export default function Intro1({ navigation, nextScreenName }) {
-	const [isMasked, setMasked] = useState(false);
-
-	const toggleMask = () => {
-		setMasked(!isMasked);
-	};
-
 	return (
 		<View style={styles.container}>
 			<LinearGradient
-				colors={["#92A3FD", "#9DCEFF"]}
+				colors={["#9DCEFF", "#8a9dff"]}
+				start={{ x: 0, y: 0.5 }}
+				end={{ x: 1, y: 0.5 }}
 				style={styles.container}
 			>
 				<Text style={styles.title}>
@@ -29,15 +25,17 @@ export default function Intro1({ navigation, nextScreenName }) {
 
 				<TouchableOpacity
 					style={styles.button}
-					// onPress={() =>
-					// 	navigation.push("Profile", { a: "aaa", b: "bbb" })
-					// }
-					onPress={toggleMask}
+					onPress={() => {
+						// navigation.push("Profile", { a: "aaa", b: "bbb" });
+						navigation.push("Intro2", { a: "aaa", b: "bbb" });
+					}}
 				>
-					{/* <GradientText
+					<GradientText
 						colors={["blue", "white"]}
-						style={styles.title}
-					/> */}
+						style={styles.smallText}
+					>
+						Get Started
+					</GradientText>
 				</TouchableOpacity>
 			</LinearGradient>
 		</View>
@@ -53,16 +51,16 @@ const styles = StyleSheet.create({
 		flexDirection: "column",
 		justifyContent: "center",
 		alignItems: "center",
-		flexShrink: "0",
+		// flexShrink: "0",
 		// gap: "271px",
 		// borderRadius: "40px",
 	},
 	title: {
 		color: "#1D1617",
 		fontSize: 36,
-		fontFamily: "Poppins",
+		// fontFamily: "Poppins",
 		fontWeight: "700",
-		lineHeight: "normal",
+		// lineHeight: "normal",
 	},
 	X: {
 		color: "white",
@@ -72,9 +70,9 @@ const styles = StyleSheet.create({
 	smallText: {
 		color: "#7B6F72",
 		fontSize: 18,
-		fontFamily: "Poppins",
+		// fontFamily: "Poppins",
 		fontWeight: "400",
-		lineHeight: "normal",
+		// lineHeight: "normal",
 	},
 	button: {
 		marginTop: 250,
