@@ -25,8 +25,7 @@ export default function Intro1({ navigation, nextScreenName }) {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          // navigation.push("Profile", { a: "aaa", b: "bbb" });
-          navigation.push("Intro2", { a: "aaa", b: "bbb" });
+          navigation.navigate("Intro2", { a: "aaa", b: "bbb" });
         }}
       >
         <GradientText colors={["blue", "white"]} style={styles.smallText}>

@@ -1,32 +1,45 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+
 import Intro1 from "./Intro1";
 import Intro2 from "./Intro2";
+import Intro3 from "./Intro3";
+import Intro4 from "./Intro4";
+import Intro5 from "./Intro5";
 
-// This is simply a stack you can push and pop from. You will always be on the most recently pushed stack. LIFO ordering
+const Tab = createMaterialTopTabNavigator();
 
-const Stack = createStackNavigator();
-
-const stackScreens = [
+const tabScreens = [
   {
     id: 0,
     name: "Intro1",
     component: Intro1,
-    screenComponent: (props) => {
-      return <Intro1 />;
-    },
-    headerShown: false,
+    // Not sure if I need this
+    // screenComponent: (props) => {
+    //   return <Intro1 />;
+    // },
   },
   {
     id: 1,
     name: "Intro2",
     component: Intro2,
-    screenComponent: (props) => {
-      return <Intro2 />;
-    },
-    headerShow: true,
+  },
+  {
+    id: 2,
+    name: "Intro3",
+    component: Intro3,
+  },
+  {
+    id: 3,
+    name: "Intro4",
+    component: Intro4,
+  },
+  {
+    id: 4,
+    name: "Intro5",
+    component: Intro5,
   },
 ];
 
@@ -34,21 +47,22 @@ const Intro = () => {
   return (
     <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          {stackScreens.map((item, index) => {
+        <Tab.Navigator initialRouteName="Home">
+          {tabScreens.map((item, index) => {
             return (
-              <Stack.Screen
+              <Tab.Screen
                 key={index}
                 name={item.name}
                 component={item.component}
                 options={{
-                  title: item.title,
-                  headerShown: false,
+                  tabBarStyle: {
+                    height: 0,
+                  },
                 }}
               />
             );
           })}
-        </Stack.Navigator>
+        </Tab.Navigator>
       </NavigationContainer>
     </View>
   );
