@@ -1,22 +1,20 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
+import "react-native-gesture-handler";
+// This MUST be at the top, it's a special import and nothing can come before it
+
+import { StyleSheet, SafeAreaView } from "react-native";
 import Intro from "./src/Intro/Intro";
-import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
-	return (
-		<View style={styles.container}>
-			<StatusBar style="auto" />
-			<Intro />
-		</View>
-	);
+  return (
+    <SafeAreaView style={styles.container}>
+      <Intro />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "white",
-		alignItems: "center",
-		justifyContent: "center",
-	},
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+  },
 });
