@@ -11,46 +11,44 @@ import GradientText from "../Utility/GradientText";
 
 export default function Intro1({ navigation, nextScreenName }) {
   return (
-    <LinearGradient
-      colors={["#9DCEFF", "#8a9dff"]}
-      start={{ x: 0, y: 0.5 }}
-      end={{ x: 1, y: 0.5 }}
-      style={styles.container}
-    >
-      <Text style={styles.title}>
-        ThriveTrack<Text style={styles.X}>X</Text>
-      </Text>
-      <Text style={styles.smallText}>Everbyody Can Train</Text>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate("Intro2", { a: "aaa", b: "bbb" });
-        }}
-      >
-        <GradientText colors={["blue", "white"]} style={styles.smallText}>
-          Get Started
+    <View style={styles.container}>
+      <View></View>
+      <View>
+        <GradientText colors={["#9DCEFF", "#8a9dff"]} style={styles.title}>
+          <Text>ThriveTrack</Text>
         </GradientText>
+        <Text style={styles.smallText}>Everbyody Can Train</Text>
+      </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Intro2");
+        }}
+        style={styles.button}
+      >
+        <LinearGradient
+          colors={["#9DCEFF", "#8a9dff"]}
+          start={{ x: 0, y: 0.5 }}
+          end={{ x: 1, y: 0.5 }}
+          style={styles.buttonGradient}
+        >
+          <Text style={styles.buttonText}>Get Started</Text>
+        </LinearGradient>
       </TouchableOpacity>
-    </LinearGradient>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
+    backgroundColor: "white",
   },
   title: {
     color: "#1D1617",
     fontSize: 36,
     fontWeight: "700",
-  },
-  X: {
-    color: "white",
-    fontSize: 40,
-    fontWeight: "900",
   },
   smallText: {
     color: "#7B6F72",
@@ -59,13 +57,19 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 250,
+  },
+  buttonGradient: {
     width: 300,
+    height: 50,
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 99,
     elevation: 3,
-    backgroundColor: "white",
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 15,
   },
 });
